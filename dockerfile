@@ -10,6 +10,6 @@ RUN npm install -g nodemon
 
 COPY ./app/ .
 
-EXPOSE 3003
+EXPOSE 3000
 
 CMD ["npm", "start"]

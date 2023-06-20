@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+}
+
+.App-circle {
+  height: 50vmin;
+  pointer-events: none;
+}
+
+.ombre {
+  filter: drop-shadow(-10px 10px black);
+}
+
+
+.App-star1, .App-star2, .App-star3 {
+  height: 8vmin;
+  pointer-events: none;
+}
+
+
+.App-ch1, .App-ch2, .App-ch3, .App-ch4 {
+  padding: 25px 150px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-circle {
+    animation: App-circle-spin infinite 20s linear;
+  }
+}
+
+.nav-banner {
+  background-color: white;
+  text-transform: uppercase;
+  margin: 20px;
+}
+
+.left-nav{
+  padding-left: 15px;
+  float: left;
+  font-family: fantasy;
+}
+
+.rigth-nav{
+  padding-right: 15px;
+  text-align: right;
+  font-family: fantasy;
+}
+
+.box{
+  float: right;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 25px;
+  align-items: center;
+  
+  filter: drop-shadow(-10px 10px pink);
+}
+
+.App-header {
+  border-top: 2px solid black;
+}
+
+.header-left{
+  float: left;
+  background-color: pink;
+  width: 50%;
+  height: 200%;
+  border-right: 2px solid black;  
+}
+
+section, p{
+  font-family: fantasy;
+}
+
+.name{  
+  text-transform: uppercase;
+
+}
+
+.header-right{
+  text-align: right;
+  background-color: white;
+  width: 94%;
+}
+
+
+@keyframes App-circle-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
