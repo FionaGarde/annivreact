@@ -1,8 +1,30 @@
 version: '3.6'
 services:
   react:
-    build: .
+    image: node
     ports:
-      - '3003:3003'
+      - '3001:3000'
+    working_dir: /home/node/app
     volumes:
-      - './app:/home/node/app'
+      - './project/client:/home/node/app'
+    command:
+      - /bin/sh
+      - '-c'
+      - 'npm install && npm start'
+  api:
+    image: node
+    ports:
+      - '3000:3000'
+    working_dir: /home/node/app
+    volumes:
+      - './project/back:/home/node/app'
+    command:
+      - /bin/sh
+      - '-c'
+      - 'npm install && npm start'
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
