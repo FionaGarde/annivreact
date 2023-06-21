@@ -1,4 +1,4 @@
-module.exports = (server) => {
+/*module.exports = (server) => {
 
     const birthdayController = require("../controllers/birthdayController");
 
@@ -13,4 +13,22 @@ module.exports = (server) => {
     .get(birthdayController.getABirthday)
     //supprimer un anniversaire
     .delete(birthdayController.deleteABirthday)
-}
+}*/
+
+
+exports.routes = (server) => {
+const express = require('express');
+const csvController = require('../controllers/csvController');
+const Birthday = require( '../controllers/birthdayController');
+
+const router = express.Router();
+
+
+  // CSV
+  router.post('/csv/upload', csvController.upload);
+
+  // Birthdays
+  router.get('/birthday', Birthday.getBirthdays);
+
+  server.use("/", router);
+};
