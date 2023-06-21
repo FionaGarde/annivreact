@@ -8,11 +8,13 @@ const server = express();
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://mongo/apinode");
 
-server.use(express.urlencoded());
+server.use(express.urlencoded({extended: true}));
 server.use(express.json());
 
 const birthdayRoute = require("./api/routes/birthdayRoute");
-birthdayRoute(server); 
+birthdayRoute.routes(server);
+
+
 
 server.listen(port,hostname, () => {
     console.log(`Serveur qui tourne sur le port ${port}`)

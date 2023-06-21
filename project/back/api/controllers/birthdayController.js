@@ -1,4 +1,4 @@
-const Birthday = require('../models/birthdayModel');
+/*const Birthday = require('../models/birthdayModel');
 
 exports.listAllBirthdays = async (req, res) => {
 
@@ -38,9 +38,9 @@ exports.createABirthday = async (req, res) => {
         }
     })*/
 
-}
+//}
 
-exports.getABirthday = async (req, res) => {
+/*exports.getABirthday = async (req, res) => {
 
     const birthday = await Birthday.findById(req.params.birthday_id,{});
 
@@ -57,9 +57,9 @@ exports.getABirthday = async (req, res) => {
             res.json(birthday);
         }
     })*/
-}
+//}
 
-exports.deleteABirthday = async (req, res) => {
+/*exports.deleteABirthday = async (req, res) => {
 
     const birthdays = await Birthday.findByIdAndRemove(req.params.birthday_id,{});
 
@@ -76,4 +76,28 @@ exports.deleteABirthday = async (req, res) => {
             res.json({message: "Anniversaire supprimé"});
         }
     })*/
-}
+//}
+
+
+const Birthday = require( '../models/birthdayModel');
+
+exports.getBirthdays = (_req, res) => {
+    Birthday.findAll({
+        include: [{
+            model: Birthday,
+            as: 'birth',
+            attributes: ['id', 'lastname', 'firstname', 'birth', 'email'],
+            required: true
+        }]
+    })
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message
+             || "There might be some error occurred while retrieving birthdays from database.",
+        });
+      });
+  };
